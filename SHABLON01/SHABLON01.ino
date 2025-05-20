@@ -1,6 +1,6 @@
-const int led = 2
-const int mic = 3
-const int matrixport = 4
+const int led = 2;
+const int mic = 3;
+const int matrixport = 4;
 
 //-слэш - разрез /слэш в гору \слэш с горы
 //Маркеры памяти
@@ -16,38 +16,12 @@ const int matrixport = 4
 // Способности
 // Играть музыку
 
-void much_mus(){// измерение музыки
-  Serial.begin(9600);  // инициализация последовательной связи — рассчитанные значения дБ будут отображаться в окне монитора последовательной связи
-  pinMode(3, OUTPUT);
-  
-     
-  PdB = dB;  // сохраняем предыдущее значение дБ
-  adc = analogRead(MIC);  // считываем значение АЦП с выхода усилителя
-  dB = (adc+83.2073) / 11.003;  // преобразуем значения АЦП в дБ, используя полученные значения из уравнения регрессии
-  if (PdB!=dB) Serial.println (dB);
-  if (dB>60) {
-    digitalWrite(3, HIGH);  // включаем светодиод (HIGH — уровень напряжения)
-    delay(2000);  // ждём секунду
-    digitalWrite(3, LOW);
-  }    
+void much_mus(){// измерение музыки;
+ 
 }
 
 void light_pixel(){ // зажечь пиксель
-  strip.begin();  // инициализируем объект NeoPixel [2](https://xn--18-6kcdusowgbt1a4b.xn--p1ai/%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0-neopixel/)
-  strip.show();  // отключаем все пиксели на ленте [2](https://xn--18-6kcdusowgbt1a4b.xn--p1ai/%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0-neopixel/)
-  strip.setBrightness(50);  // указываем яркость (максимум 255) [2](https://xn--18-6kcdusowgbt1a4b.xn--p1ai/%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0-neopixel/)
-  for (int i = 0; i <= pix; i++) {
-        strip.setPixelColor(i, 0, 0, 250);
-        strip.show();  // отправляем информацию на ленту
-        delay(50);  // задержка для эффекта
-  }
-    for (int b = 50; b < 250; b++) {
-        for (int i = 0; i <= pix; i++) {
-            strip.setPixelColor(i, 250, 250, b * i / 250);
-        }
-        strip.show();  // отправляем информацию на ленту
-        delay(50);  // задержка для эффекта
-  }    
+  
 }  
 
 void light_stolbs(){//зажечь столбики
@@ -77,4 +51,3 @@ void loop(){
     
   }
   
-}
